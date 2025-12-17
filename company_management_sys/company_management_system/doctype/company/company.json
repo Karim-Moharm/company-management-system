@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-17 20:18:57.485250",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company_name",
+  "number_of_departements",
+  "number_of_employees",
+  "number_of_projects"
+ ],
+ "fields": [
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "number_of_departements",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Number of Departements",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "number_of_employees",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Number of Employees",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "number_of_projects",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Number of Projects",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-17 21:23:58.480259",
+ "modified_by": "Administrator",
+ "module": "Company Management System",
+ "name": "Company",
+ "owner": "karim.s.moharm@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
