@@ -1,0 +1,128 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-18 10:03:48.481632",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basics_info_section",
+  "project_name",
+  "company",
+  "departement",
+  "project_details_section",
+  "description",
+  "start_date",
+  "end_date",
+  "assigned_employees"
+ ],
+ "fields": [
+  {
+   "fieldname": "basics_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basics Info"
+  },
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "departement",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Departement",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project_details_section",
+   "fieldtype": "Section Break",
+   "label": "Project Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "assigned_employees",
+   "fieldtype": "Table",
+   "label": "Assigned Employees",
+   "options": "Project Assigned Employee"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-18 11:06:26.275813",
+ "modified_by": "Administrator",
+ "module": "Company Management System",
+ "name": "Project",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Project Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR"
+  },
+  {
+   "print": 1,
+   "read": 1,
+   "role": "Employee"
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
