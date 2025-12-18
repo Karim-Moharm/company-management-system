@@ -1,14 +1,15 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2025-12-18 10:03:48.481632",
+ "autoname": "field:project_name",
+ "creation": "2025-12-18 16:15:55.801139",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "basics_info_section",
+  "basic_info_section",
   "project_name",
   "company",
-  "departement",
+  "department",
   "project_details_section",
   "description",
   "start_date",
@@ -17,16 +18,17 @@
  ],
  "fields": [
   {
-   "fieldname": "basics_info_section",
+   "fieldname": "basic_info_section",
    "fieldtype": "Section Break",
-   "label": "Basics Info"
+   "label": "Basic info"
   },
   {
    "fieldname": "project_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Project Name",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "company",
@@ -37,10 +39,10 @@
    "reqd": 1
   },
   {
-   "fieldname": "departement",
+   "fieldname": "department",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Departement",
+   "label": "Department",
    "options": "Department",
    "reqd": 1
   },
@@ -77,10 +79,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-18 11:06:26.275813",
+ "modified": "2025-12-18 16:27:04.134866",
  "modified_by": "Administrator",
  "module": "Company Management System",
  "name": "Project",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -96,6 +99,11 @@
    "write": 1
   },
   {
+   "print": 1,
+   "read": 1,
+   "role": "HR"
+  },
+  {
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -104,15 +112,8 @@
    "read": 1,
    "report": 1,
    "role": "Project Manager",
-   "select": 1,
    "share": 1,
    "write": 1
-  },
-  {
-   "email": 1,
-   "print": 1,
-   "read": 1,
-   "role": "HR"
   },
   {
    "print": 1,
@@ -124,5 +125,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "project_name"
 }

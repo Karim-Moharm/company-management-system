@@ -1,23 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:department_name",
  "creation": "2025-12-17 21:55:26.256857",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "departement_name",
+  "department_name",
   "company",
   "number_of_employees",
   "number_of_projects"
  ],
  "fields": [
-  {
-   "fieldname": "departement_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Departement Name",
-   "reqd": 1
-  },
   {
    "fieldname": "company",
    "fieldtype": "Link",
@@ -43,15 +37,24 @@
    "label": "Number of Projects",
    "non_negative": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "department_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Department Name",
+   "reqd": 1,
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-17 22:25:18.630539",
+ "modified": "2025-12-18 16:49:33.161825",
  "modified_by": "Administrator",
  "module": "Company Management System",
  "name": "Department",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -80,5 +83,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "department_name"
 }

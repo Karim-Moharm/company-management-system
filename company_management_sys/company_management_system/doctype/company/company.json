@@ -1,12 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:company_name",
  "creation": "2025-12-17 20:18:57.485250",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "company_name",
-  "number_of_departements",
+  "number_of_departments",
   "number_of_employees",
   "number_of_projects"
  ],
@@ -17,14 +18,6 @@
    "label": "Company Name",
    "reqd": 1,
    "unique": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "number_of_departements",
-   "fieldtype": "Int",
-   "in_list_view": 1,
-   "label": "Number of Departements",
-   "read_only": 1
   },
   {
    "default": "0",
@@ -41,15 +34,24 @@
    "in_list_view": 1,
    "label": "Number of Projects",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "number_of_departments",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Number of Departments",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-17 21:23:58.480259",
+ "modified": "2025-12-18 16:50:23.568695",
  "modified_by": "Administrator",
  "module": "Company Management System",
  "name": "Company",
+ "naming_rule": "By fieldname",
  "owner": "karim.s.moharm@gmail.com",
  "permissions": [
   {
@@ -69,5 +71,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "company_name"
 }
