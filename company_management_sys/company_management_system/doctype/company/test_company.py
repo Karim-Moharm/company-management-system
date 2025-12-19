@@ -16,7 +16,7 @@ class TestCompany(FrappeTestCase):
     
     def tearDown(self):
         if self.company:
-            return self.company.delete()
+            self.company.delete()
         
     def test_create_company(self):
         """
