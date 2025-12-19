@@ -11,14 +11,14 @@ class Project(Document):
 		After creating a project
 		"""
 		update_company_count(self.company)
-		update_department_count(self.dept)
+		update_department_count(self.department)
 
 	def on_trash(self):
 		"""
 		after deleting a project
 		"""
 		update_company_count(self.company)
-		update_department_count(self.dept)
+		update_department_count(self.department)
 
 
 

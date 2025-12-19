@@ -32,6 +32,24 @@ class Department(Document):
 	
 	def on_trash(self):
 		update_company_fields(self.company)
+
+
+
+	def check_duplicate(self):
+		"""
+		Ensure that the department name is unique within the same company.
+		Rules:
+		- A department name must be unique for the same company.
+		- The same department name can exist in different companies.
+		"""
+		exists = frappe.db.exists('Department', {
+			'department_name': self.department_name,
+			'company': self.company,
+			'name': ['!=', self.name]
+		})
+		
+		if exists:
+				frappe.throw(f'Department "{self.department_name}" already exists in {self.company}')
 	
 
 
@@ -40,13 +58,10 @@ def update_company_fields(company_name):
 		return
 	
 	dept_count = frappe.db.count('Department', {'company': company_name})
-	emp_count = frappe.db.count('Employee', {'company': company_name})
-	proj_count = frappe.db.count('Project', {'company': company_name})
 
 	frappe.db.set_value(
 		'Company',
 		company_name,
-		{'number_of_departments': dept_count},
-		{'number_of_employees': emp_count},
-		{'number_of_projects': proj_count}
+		'number_of_departments', 
+		dept_count
 	)

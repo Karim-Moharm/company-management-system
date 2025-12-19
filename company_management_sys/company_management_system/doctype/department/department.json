@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:department_name",
+ "autoname": "format:DEPT-{company}-{department_name}",
  "creation": "2025-12-17 21:55:26.256857",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -43,18 +43,17 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Department Name",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-18 16:49:33.161825",
+ "modified": "2025-12-18 22:25:16.306082",
  "modified_by": "Administrator",
  "module": "Company Management System",
  "name": "Department",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
