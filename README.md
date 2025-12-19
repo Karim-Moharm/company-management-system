@@ -1,193 +1,126 @@
-# Company Management System
+
+<h1 style="font-size: 30px" align="center">📋 Company Management System</h1>
+
+---
 
 ## Table of Contents
 - [Overview](#overview)
-- [Data Models](#data-models)
+- [Documentation](#documentation)
+- [Setup & Installation](#setup--installation)
+- [Requirement Checklist & Assumptions](#requirement-checklist--assumptions)
 - [Employee Performance Review Workflow](#employee-performance-review-workflow)
 - [Security & Permissions](#security--permissions)
-- [API Endpoints](#api-endpoints)
-- [Setup & Installation](#setup--installation)
 - [Testing](#testing)
-- [Task Completion Checklist](#task-completion-checklist)
-- [Considerations & Assumptions](#considerations--assumptions)
 
----
+
 
 ## Overview
-This project is a **Company Management System** designed to manage:
-- Companies
-- Departments
-- Employees
-- Projects
+Company Management System that encompasses various features for managing companies, departments, employees, and projects.
 
-
-It also includes a structured workflow for **Employee Performance Reviews** and role-based access control for secure data handling.
-
+### **Built with**
+- Frappe Framwork
+- Python
 
 ---
-## 2. Setup & Installation
+## Documentation
+- ### **[API Documentation](docs/api/README.md)**: Detailed documentation for API endpoints.
+- ### [**Demo**](docs/imgs/README.md)
 
-### Prerequisites
+---
+## Setup & Installation
+
+Before installing Frappe, ensure your system (Ubuntu 22.04+ (recommended) / Unix-like OS) has the following dependencies installed:
+### Install Prerequisites
 * Python 3.10+
 * Node.js 18+ & NPM
 * MariaDB 10.6+
 * Redis (for caching and job queuing)
 * Frappe Bench CLI
 
+
+### Frappe Setup
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+```bash
+sudo apt install -y \
+git \
+python3-dev \
+python3-pip \
+python3-venv \
+software-properties-common \
+mariadb-server \
+mariadb-client \
+redis-server \
+curl \
+npm \
+xvfb \
+libfontconfig \
+wkhtmltopdf
+```
+
+```bash
+# installing nodejs and yarn
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+sudo npm install -g yarn
+```
+
+```bash
+# MariaDB Configuration
+sudo mysql_secure_installation
+```
+
+```bash
+# Update MariaDB config:
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+```
+
+Add or update the following:
+```ini
+[mysqld]
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+```
+
+```bash
+# Restart MariaDB:
+sudo service mysql restart
+```
+
+```bash
+# Upgrade pip and install bench:
+pip3 install --upgrade pip
+pip3 install frappe-bench
+bench init frappe-bench
+```
+
 ### Installation Steps
 1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/Karim-Moharm/company-management-system
-    cd frappe-bench
-    ```
+```bash
+git clone https://github.com/Karim-Moharm/company-management-system
+cd frappe-bench
+```
 2.  **Create the Site:**
-    ```bash
-    bench new-site company_mgmt.local
-    ```
+```bash
+bench new-site company_mgmt.local
+```
 3.  **Install the App:**
-    ```bash
-    bench get-app [app_name]
-    bench --site company_mgmt.local install-app [app_name]
-    ```
+```bash
+bench get-app [app_name]
+bench --site company_mgmt.local install-app [app_name]
+```
 4.  **Start the Server:**
-    ```bash
-    bench start
-    ```
-
-
----
-
-## Data Models
-
-### User Accounts
-- `username`
-- `email` (login ID)
-- `role` (Admin, Manager, Employee)
-
-### Company
-- `company_name`
-- `num_departments` (auto-calculated)
-- `num_employees` (auto-calculated)
-- `num_projects` (auto-calculated)
-
-### Department
-- `company` (select)
-- `department_name`
-- `num_employees` (auto-calculated)
-- `num_projects` (auto-calculated)
-
-### Employee
-- `company` (select)
-- `department` (select)
-- `employee_name`
-- `email`
-- `mobile_number`
-- `address`
-- `designation`
-- `hired_on` (optional)
-- `days_employed` (auto-calculated)
-
-### Project
-- `company` (select)
-- `department` (select)
-- `project_name`
-- `description`
-- `start_date`
-- `end_date`
-- `assigned_employees` (multi-select)
+```bash
+bench start
+```
 
 ---
 
-## Employee Performance Review Workflow
-![alt text](company_management_sys/public/imgs/workflow.png)
-
-For more obvios image
-
-![alt text](<company_management_sys/public/imgs/workflow2.png>)
-
-### Stages
-1. **Pending Review**: Employee flagged for review.
-2. **Review Scheduled**: Review meeting scheduled.
-3. **Feedback Provided**: Feedback documented.
-4. **Under Approval**: Manager reviewing feedback.
-5. **Review Approved**: Feedback finalized.
-6. **Review Rejected**: Feedback rejected; requires update.
-
-![alt text](company_management_sys/public/imgs/states.png)
-
-### Transitions
-- `Pending Review → Review Scheduled`: When review date is set.
-- `Review Scheduled → Feedback Provided`: After review meeting.
-- `Feedback Provided → Under Approval`: Submitting feedback for managerial approval.
-- `Under Approval → Review Approved`: Manager approves feedback.
-- `Under Approval → Review Rejected`: Manager rejects feedback.
-- `Review Rejected → Feedback Provided`: Feedback updated after rejection.
-
-![alt text](company_management_sys/public/imgs/transition.png)
-
----
-
-## Security & Permissions
-- **Role-Based Access Control**:
-  - Admin: Full access
-  - Manager: Access to own department and employees
-  - Employee: Access to own profile and performance review
-- **Authentication**: Secure sessions or token-based authentication.
-- **Authorization**: Restrict API and UI access based on roles.
-
----
-
-## API Endpoints
-
-### Company
-- `GET /companies/`: List all companies
-- `GET /companies/{id}/`: Retrieve a single company
-
-### Department
-- `GET /departments/`: List all departments
-- `GET /departments/{id}/`: Retrieve a single department
-
-### Employee
-- `POST /employees/`: Create a new employee
-- `GET /employees/`: List all employees
-- `GET /employees/{id}/`: Retrieve a single employee
-- `PATCH /employees/{id}/`: Update an employee
-- `DELETE /employees/{id}/`: Delete an employee
-
-### Project
-- `POST /projects/`: Create a new project
-- `GET /projects/`: List all projects
-- `GET /projects/{id}/`: Retrieve a single project
-- `PATCH /projects/{id}/`: Update a project
-- `DELETE /projects/{id}/`: Delete a project
-
-
-
-**Notes:**
-- API follows RESTful conventions.
-- Secure handling of sensitive data is ensured.
-
----
-
-## Setup & Installation
-
-### Prerequisites
-- Python >= 3.10
-- Node.js >= 18 (if frontend included)
-- Database (PostgreSQL/MySQL/SQLite)
-- Git
-
-### Installation Steps
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   cd company-management-system
-   ```
-
-
-
-
-## 3. Requirement Checklist & Assumptions
+## Requirement Checklist & Assumptions
 
 | Task | Status | Notes |
 | :--- | :--- | :--- |
@@ -204,3 +137,45 @@ For more obvios image
 * **Days Employed:** Calculated based on the `Hired On` date against the current system date.
 * **Auto-Calculations:** Employee, Department, and Project counts on the Company level refresh whenever a child record is created or deleted.
 * **Differnet Companies Names can have same Department:** the department name is not unique so companies can have same department name, but the departmet name is uniqe for same company
+
+
+---
+
+## Employee Performance Review Workflow
+![alt text](docs/imgs/workflow.png)
+
+For more obvios image
+
+![alt text](<docs/imgs/workflow2.png>)
+
+### Stages
+1. **Pending Review**: Employee flagged for review.
+2. **Review Scheduled**: Review meeting scheduled.
+3. **Feedback Provided**: Feedback documented.
+4. **Under Approval**: Manager reviewing feedback.
+5. **Review Approved**: Feedback finalized.
+6. **Review Rejected**: Feedback rejected; requires update.
+
+![alt text](docs/imgs/states.png)
+
+### Transitions
+- `Pending Review → Review Scheduled`: When review date is set.
+- `Review Scheduled → Feedback Provided`: After review meeting.
+- `Feedback Provided → Under Approval`: Submitting feedback for managerial approval.
+- `Under Approval → Review Approved`: Manager approves feedback.
+- `Under Approval → Review Rejected`: Manager rejects feedback.
+- `Review Rejected → Feedback Provided`: Feedback updated after rejection.
+
+![alt text](docs/imgs/transition.png)
+
+---
+
+## Security & Permissions
+- **Role-Based Access Control**:
+  - Admin: Full access
+  - Manager: Access to own department and employees
+  - Employee: Access to own profile and performance review
+- **Authentication**: Secure sessions or token-based authentication.
+- **Authorization**: Restrict API and UI access based on roles.
+
+---
