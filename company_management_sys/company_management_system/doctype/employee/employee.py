@@ -4,6 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from datetime import datetime
+from frappe.utils import getdate, nowdate, date_diff
 
 class Employee(Document):
 	def validate(self):
@@ -15,23 +16,20 @@ class Employee(Document):
 		update_dept_fields(self.department)
 
 
-
 	def after_insert(self):
 		update_company_fields(self.company)
 		update_dept_fields(self.department)
 
 
-
 	def calculate_days_employed(self):
-		if self.hired_on:
-			today = datetime.now()
-			hired_date = datetime.strptime(self.hired_on, '%Y-%m-%d')
-			days = (today - hired_date).days
-			if days > 0:
-				self.days_employed = days
-			else:
-				self.days_employed = 0
+		if not self.hired_on:
+			self.days_employed = None
+			return
 
+		hired_date = getdate(self.hired_on)
+		today = getdate(nowdate())
+
+		self.days_employed = date_diff(today, hired_date)
 
 
 def update_company_fields(company_name):
