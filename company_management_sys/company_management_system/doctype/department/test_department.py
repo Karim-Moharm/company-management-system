@@ -82,3 +82,23 @@ class TestDepartment(FrappeTestCase):
 		project.delete()
 		empl.delete()
 
+
+	def test_required_fields(self):
+			"""
+			Test that required fields are enforced.
+			"""
+			# without department name
+			with self.assertRaises(frappe.exceptions.ValidationError):
+				department = frappe.get_doc({
+					"doctype": "Department",
+					"company": self.company.name
+				}).insert()
+
+			# witout the company
+			with self.assertRaises(frappe.exceptions.ValidationError):
+				dept = frappe.get_doc({
+					"doctype": "Department",
+					"department_name": "test dept"
+				}).insert()
+
+			
