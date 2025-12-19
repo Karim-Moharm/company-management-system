@@ -1,6 +1,6 @@
 from frappe.tests.utils import FrappeTestCase
 import frappe
-from frappe.exceptions import MandatoryError
+from frappe import exceptions
 
 
 
@@ -24,22 +24,34 @@ class TestCompany(FrappeTestCase):
         """
         company = frappe.get_doc({
             "doctype": "Company",
-            "company_name": "test company"
+            "company_name": "test company",
         }).insert()
         self.assertEqual(company.company_name, "test company")
         self.assertEqual(company.number_of_departments, 0)
         self.assertEqual(company.number_of_employees, 0)
-        self.assertEqual(company.number_of_pojects, "test company")
+        self.assertEqual(company.number_of_projects, 0)
 
         company.delete()
 
 
     def test_requied_company_name(self):
         """test case for a required field"""
-        with self.assertRaises(MandatoryError):
+        with self.assertRaises(exceptions.ValidationError):
             frappe.get_doc({
                 "doctype": "Company"
             }).insert()
 
 
+    def test_unique_company_name(self):
+        """test case for unique fiels"""
+        company1 = frappe.get_doc({
+        "doctype": "Company",
+        "company_name": "test company",
+        }).insert()
+        with self.assertRaises(exceptions.DuplicateEntryError):
+            frappe.get_doc({
+                "doctype": "Company",
+                "company_name": "test company",
+            }).insert()
+        company1.delete()
     
