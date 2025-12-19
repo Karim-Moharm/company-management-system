@@ -1,10 +1,12 @@
 
-## GET /project
+## GET /api/resource/project
 ```bash
 curl --location 'http://127.0.0.1:8000/api/resource/Project/API2' \
 --header 'Cookie: sid=Guest; system_user=no; full_name=Guest; user_id=Guest; user_lang=en' \
 --header 'Authorization: token API_KEY:API_SECRET'
 ```
+
+Response
 
 ```json
 {"data":[{"name":"API1"},{"name":"API2"},{"name":"API3"},{"name":"Company Managment System"},{"name":"Penetation Testing"}]}
@@ -15,7 +17,7 @@ curl --location 'http://127.0.0.1:8000/api/resource/Project/API2' \
 
 ---
 
-## GET /project/API1
+## GET /api/resource/project/API1
 
 ```bash
 curl --location 'http://127.0.0.1:8000/api/resource/Project/API1' \
@@ -23,6 +25,7 @@ curl --location 'http://127.0.0.1:8000/api/resource/Project/API1' \
 --header 'Authorization: token a0e7ec64a62c939:ebf4278767d0090'
 ```
 
+Response
 
 ```json
 {
@@ -47,7 +50,9 @@ curl --location 'http://127.0.0.1:8000/api/resource/Project/API1' \
 
 ![alt text](../imgs/image(2).png)
 
-## POST /project
+---
+
+## POST /api/resource/project
 
 ```bash
 curl --location 'http://127.0.0.1:8000/api/resource/Project/' \
@@ -64,5 +69,7 @@ curl --location 'http://127.0.0.1:8000/api/resource/Project/' \
         "assigned_employees": []
     }'
 ```
+
+
 
 ![alt text](<../imgs/post-project.png>)
