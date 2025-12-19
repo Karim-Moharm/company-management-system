@@ -39,7 +39,7 @@ def update_department_count(dept_name):
 	if not dept_name:
 		return 
 
-	proj_count = frappe.db.count('Project', {'Department': dept_name})
+	proj_count = frappe.db.count('Project', {'department': dept_name})
 	frappe.db.set_value(
 		'Department',
 		dept_name,
