@@ -10,7 +10,7 @@ curl --location 'http://127.0.0.1:8000/api/resource/Project/API2' \
 {"data":[{"name":"API1"},{"name":"API2"},{"name":"API3"},{"name":"Company Managment System"},{"name":"Penetation Testing"}]}
 ```
 
-![alt text](image(1).png)
+![alt text](../imgs/image(1).png)
 
 
 ---
@@ -45,7 +45,7 @@ curl --location 'http://127.0.0.1:8000/api/resource/Project/API1' \
 }
 ```
 
-![alt text](image(2).png)
+![alt text](../imgs/image(2).png)
 
 ## POST /project
 
@@ -65,4 +65,4 @@ curl --location 'http://127.0.0.1:8000/api/resource/Project/' \
     }'
 ```
 
-![alt text](<Screenshot from 2025-12-19 22-56-18.png>)
+![alt text](<../imgs/post-project.png>)
