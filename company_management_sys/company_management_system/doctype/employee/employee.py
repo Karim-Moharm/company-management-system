@@ -3,7 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
-from datetime import date
+from datetime import datetime
 
 class Employee(Document):
 	def validate(self):
@@ -22,13 +22,15 @@ class Employee(Document):
 
 
 
-
 	def calculate_days_employed(self):
 		if self.hired_on:
-			today = date.today()
-			self.days_employed = (today - self.hired_on).days
-		else:	
-			self.days_employed = 0
+			today = datetime.now()
+			hired_date = datetime.strptime(self.hired_on, '%Y-%m-%d')
+			days = (today - hired_date).days
+			if days > 0:
+				self.days_employed = days
+			else:
+				self.days_employed = 0
 
 
 
