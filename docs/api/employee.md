@@ -31,7 +31,7 @@ Response
 
 ---
 
-## DELETE /api/resource/Employee/
+## DELETE /api/resource/Employee/Karim
 
 ```bash
 curl --location --request DELETE 'http://127.0.0.1:8000/api/resource/Employee/Karim' \
