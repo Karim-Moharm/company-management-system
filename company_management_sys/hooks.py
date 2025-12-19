@@ -21,6 +21,19 @@ app_license = "mit"
 # 	}
 # ]
 
+
+# WorkFlow
+
+fixtures = [
+    {
+        "dt": "Workflow",
+        "filters": [
+            ["workflow_name", "=", "Employee Performance Review Cycle"]
+        ]
+    }
+]
+
+
 # Includes in <head>
 # ------------------
 

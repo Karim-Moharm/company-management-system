@@ -1,0 +1,165 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
+  "document_type": "Workflow",
+  "enable_action_confirmation": 0,
+  "is_active": 1,
+  "modified": "2025-12-19 00:24:47.956586",
+  "name": "Employee Performance Review Cycle",
+  "override_status": 0,
+  "send_email_alert": 0,
+  "states": [
+   {
+    "allow_edit": "HR",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Pending Review",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "1"
+   },
+   {
+    "allow_edit": "HR",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Review Scheduled",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "2"
+   },
+   {
+    "allow_edit": "HR",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Feedback Provided",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "3"
+   },
+   {
+    "allow_edit": "Manager",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Under Approval",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "4"
+   },
+   {
+    "allow_edit": "Manager",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Review Approved",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "5"
+   },
+   {
+    "allow_edit": "Manager",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Review Rejected",
+    "update_field": null,
+    "update_value": null,
+    "workflow_builder_id": "6"
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Schedule Review",
+    "allow_self_approval": 1,
+    "allowed": "HR",
+    "condition": null,
+    "next_state": "Review Scheduled",
+    "send_email_to_creator": 0,
+    "state": "Pending Review",
+    "transition_tasks": null,
+    "workflow_builder_id": "action-1"
+   },
+   {
+    "action": "Provide Feedback",
+    "allow_self_approval": 1,
+    "allowed": "HR",
+    "condition": null,
+    "next_state": "Feedback Provided",
+    "send_email_to_creator": 0,
+    "state": "Review Scheduled",
+    "transition_tasks": null,
+    "workflow_builder_id": "action-2"
+   },
+   {
+    "action": "Send for Approval",
+    "allow_self_approval": 1,
+    "allowed": "HR",
+    "condition": null,
+    "next_state": "Under Approval",
+    "send_email_to_creator": 0,
+    "state": "Feedback Provided",
+    "transition_tasks": null,
+    "workflow_builder_id": "action-3"
+   },
+   {
+    "action": "Approve Review",
+    "allow_self_approval": 1,
+    "allowed": "Manager",
+    "condition": null,
+    "next_state": "Review Approved",
+    "send_email_to_creator": 0,
+    "state": "Under Approval",
+    "transition_tasks": null,
+    "workflow_builder_id": "action-4"
+   },
+   {
+    "action": "Reject Review",
+    "allow_self_approval": 1,
+    "allowed": "Manager",
+    "condition": null,
+    "next_state": "Review Rejected",
+    "send_email_to_creator": 0,
+    "state": "Under Approval",
+    "transition_tasks": null,
+    "workflow_builder_id": "action-5"
+   },
+   {
+    "action": "Update Feedback",
+    "allow_self_approval": 1,
+    "allowed": "HR",
+    "condition": null,
+    "next_state": "Feedback Provided",
+    "send_email_to_creator": 0,
+    "state": "Review Rejected",
+    "transition_tasks": null,
+    "workflow_builder_id": "action-6"
+   }
+  ],
+  "workflow_data": "[{\"type\":\"state\",\"dimensions\":{\"width\":158,\"height\":53},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":75.5833740234375,\"y\":-11,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":162.1666259765625,\"y\":23,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":75.5833740234375,\"y\":57,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11,\"y\":23,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":550,\"y\":100,\"z\":0},\"id\":\"1\",\"position\":{\"x\":550,\"y\":100}},{\"type\":\"state\",\"dimensions\":{\"width\":162,\"height\":74},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":77.5,\"y\":-11,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":166,\"y\":33.5,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":77.5,\"y\":78,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11,\"y\":33.5,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":950,\"y\":100,\"z\":0},\"id\":\"2\",\"position\":{\"x\":950,\"y\":100}},{\"type\":\"state\",\"dimensions\":{\"width\":162,\"height\":74},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":77.5,\"y\":-11,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":166,\"y\":33.5,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":77.5,\"y\":78,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11,\"y\":33.5,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":1350,\"y\":100,\"z\":0},\"id\":\"3\",\"position\":{\"x\":1350,\"y\":100}},{\"type\":\"state\",\"dimensions\":{\"width\":156,\"height\":53},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":74.666748046875,\"y\":-11,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":160.35009765625,\"y\":23,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":74.666748046875,\"y\":57,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11,\"y\":23,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":1750,\"y\":100,\"z\":0},\"id\":\"4\",\"position\":{\"x\":1750,\"y\":100}},{\"type\":\"state\",\"dimensions\":{\"width\":162,\"height\":74},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":77.5,\"y\":-11,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":166,\"y\":33.5,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":77.5,\"y\":78,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11,\"y\":33.5,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":2156.913466541232,\"y\":95.85192007526084,\"z\":0},\"id\":\"5\",\"position\":{\"x\":2156.913466541232,\"y\":95.85192007526084}},{\"type\":\"state\",\"dimensions\":{\"width\":162,\"height\":74},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":77.5,\"y\":-11,\"width\":7,\"height\":7},{\"id\":\"right\",\"position\":\"right\",\"x\":166,\"y\":33.5,\"width\":7,\"height\":7},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":77.5,\"y\":78,\"width\":7,\"height\":7},{\"id\":\"left\",\"position\":\"left\",\"x\":-11,\"y\":33.5,\"width\":7,\"height\":7}]},\"computedPosition\":{\"x\":2550,\"y\":100,\"z\":0},\"id\":\"6\",\"position\":{\"x\":2550,\"y\":100}},{\"type\":\"action\",\"dimensions\":{\"width\":136,\"height\":33},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":65.0333251953125,\"y\":-2,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":132.0833740234375,\"y\":13.5,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":65.0333251953125,\"y\":29,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2,\"y\":13.5,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":800,\"y\":120,\"z\":0},\"id\":\"action-1\",\"position\":{\"x\":800,\"y\":120},\"data\":{\"from_id\":\"1\",\"to_id\":\"2\"}},{\"type\":\"action\",\"dimensions\":{\"width\":142,\"height\":33},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":67.9166259765625,\"y\":-2,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":137.8333740234375,\"y\":13.5,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":67.9166259765625,\"y\":29,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2,\"y\":13.5,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":1200,\"y\":120,\"z\":0},\"id\":\"action-2\",\"position\":{\"x\":1200,\"y\":120},\"data\":{\"from_id\":\"2\",\"to_id\":\"3\"}},{\"type\":\"action\",\"dimensions\":{\"width\":142,\"height\":33},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":68.13330078125,\"y\":-2,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":138.283447265625,\"y\":13.5,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":68.13330078125,\"y\":29,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2,\"y\":13.5,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":1600,\"y\":120,\"z\":0},\"id\":\"action-3\",\"position\":{\"x\":1600,\"y\":120},\"data\":{\"from_id\":\"3\",\"to_id\":\"4\"}},{\"type\":\"action\",\"dimensions\":{\"width\":130,\"height\":33},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":61.949951171875,\"y\":-2,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":125.89990234375,\"y\":13.5,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":61.949951171875,\"y\":29,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2,\"y\":13.5,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":2000,\"y\":120,\"z\":0},\"id\":\"action-4\",\"position\":{\"x\":2000,\"y\":120},\"data\":{\"from_id\":\"4\",\"to_id\":\"5\"}},{\"type\":\"action\",\"dimensions\":{\"width\":116,\"height\":33},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":54.75,\"y\":-2,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":111.5166015625,\"y\":13.5,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":54.75,\"y\":29,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2,\"y\":13.5,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":2159.3558642834073,\"y\":321.9481839823636,\"z\":0},\"id\":\"action-5\",\"position\":{\"x\":2159.3558642834073,\"y\":321.9481839823636},\"data\":{\"from_id\":\"4\",\"to_id\":\"6\"}},{\"type\":\"action\",\"dimensions\":{\"width\":140,\"height\":33},\"handleBounds\":{\"source\":[{\"id\":\"top\",\"position\":\"top\",\"x\":66.88330078125,\"y\":-2,\"width\":6,\"height\":6},{\"id\":\"right\",\"position\":\"right\",\"x\":135.783447265625,\"y\":13.5,\"width\":6,\"height\":6},{\"id\":\"bottom\",\"position\":\"bottom\",\"x\":66.88330078125,\"y\":29,\"width\":6,\"height\":6},{\"id\":\"left\",\"position\":\"left\",\"x\":-2,\"y\":13.5,\"width\":6,\"height\":6}]},\"computedPosition\":{\"x\":2800,\"y\":120,\"z\":0},\"id\":\"action-6\",\"position\":{\"x\":2800,\"y\":120},\"data\":{\"from_id\":\"6\",\"to_id\":\"3\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"1\",\"target\":\"action-1\",\"updatable\":true,\"id\":\"edge-1-action-1\",\"animated\":true,\"sourceX\":719.1666259765625,\"sourceY\":126.5,\"targetX\":798,\"targetY\":136.5},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-1\",\"target\":\"2\",\"updatable\":true,\"id\":\"edge-action-1-2\",\"animated\":true,\"sourceX\":938.0833740234375,\"sourceY\":136.5,\"targetX\":939,\"targetY\":137,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"2\",\"target\":\"action-2\",\"updatable\":true,\"id\":\"edge-2-action-2\",\"animated\":true,\"sourceX\":1123,\"sourceY\":137,\"targetX\":1198,\"targetY\":136.5},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-2\",\"target\":\"3\",\"updatable\":true,\"id\":\"edge-action-2-3\",\"animated\":true,\"sourceX\":1343.8333740234375,\"sourceY\":136.5,\"targetX\":1339,\"targetY\":137,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"3\",\"target\":\"action-3\",\"updatable\":true,\"id\":\"edge-3-action-3\",\"animated\":true,\"sourceX\":1523,\"sourceY\":137,\"targetX\":1598,\"targetY\":136.5},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-3\",\"target\":\"4\",\"updatable\":true,\"id\":\"edge-action-3-4\",\"animated\":true,\"sourceX\":1744.283447265625,\"sourceY\":136.5,\"targetX\":1739,\"targetY\":126.5,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"4\",\"target\":\"action-4\",\"updatable\":true,\"id\":\"edge-4-action-4\",\"animated\":true,\"sourceX\":1917.35009765625,\"sourceY\":126.5,\"targetX\":1998,\"targetY\":136.5},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-4\",\"target\":\"5\",\"updatable\":true,\"id\":\"edge-action-4-5\",\"animated\":true,\"sourceX\":2131.89990234375,\"sourceY\":136.5,\"targetX\":2145.913466541232,\"targetY\":132.85192007526084,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"4\",\"target\":\"action-5\",\"updatable\":true,\"id\":\"edge-4-action-5\",\"animated\":true,\"sourceX\":1917.35009765625,\"sourceY\":126.5,\"targetX\":2157.3558642834073,\"targetY\":338.4481839823636},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-5\",\"target\":\"6\",\"updatable\":true,\"id\":\"edge-action-5-6\",\"animated\":true,\"sourceX\":2276.8724658459073,\"sourceY\":338.4481839823636,\"targetX\":2539,\"targetY\":137,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"6\",\"target\":\"action-6\",\"updatable\":true,\"id\":\"edge-6-action-6\",\"animated\":true,\"sourceX\":2723,\"sourceY\":137,\"targetX\":2798,\"targetY\":136.5},{\"sourceHandle\":\"right\",\"targetHandle\":\"left\",\"type\":\"transition\",\"source\":\"action-6\",\"target\":\"3\",\"updatable\":true,\"id\":\"edge-action-6-3\",\"animated\":true,\"sourceX\":2941.783447265625,\"sourceY\":136.5,\"targetX\":1339,\"targetY\":137,\"markerEnd\":{\"type\":\"arrow\",\"width\":15,\"height\":15,\"strokeWidth\":1.5,\"color\":\"#687178\"}}]",
+  "workflow_name": "Employee Performance Review Cycle",
+  "workflow_state": "Pending Review",
+  "workflow_state_field": "workflow_state"
+ }
+]
