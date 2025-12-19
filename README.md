@@ -101,6 +101,10 @@ It also includes a structured workflow for **Employee Performance Reviews** and 
 ## Employee Performance Review Workflow
 ![alt text](company_management_sys/public/imgs/workflow.png)
 
+For more obvios image
+
+![alt text](<company_management_sys/public/imgs/workflow2.png>)
+
 ### Stages
 1. **Pending Review**: Employee flagged for review.
 2. **Review Scheduled**: Review meeting scheduled.
@@ -109,6 +113,8 @@ It also includes a structured workflow for **Employee Performance Reviews** and 
 5. **Review Approved**: Feedback finalized.
 6. **Review Rejected**: Feedback rejected; requires update.
 
+![alt text](company_management_sys/public/imgs/states.png)
+
 ### Transitions
 - `Pending Review → Review Scheduled`: When review date is set.
 - `Review Scheduled → Feedback Provided`: After review meeting.
@@ -116,6 +122,8 @@ It also includes a structured workflow for **Employee Performance Reviews** and 
 - `Under Approval → Review Approved`: Manager approves feedback.
 - `Under Approval → Review Rejected`: Manager rejects feedback.
 - `Review Rejected → Feedback Provided`: Feedback updated after rejection.
+
+![alt text](company_management_sys/public/imgs/transition.png)
 
 ---
 

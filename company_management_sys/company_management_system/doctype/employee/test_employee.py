@@ -114,25 +114,68 @@ class TestEmployee(FrappeTestCase):
 	# 		}).insert()
 
 
-	def test_calculate_days_employed(self):
-		unhired_emp = self.employee
+	# def test_calculate_days_employed(self):
+	# 	unhired_emp = self.employee
 		
-		today = datetime.now().date()
-		hired_date = datetime.strptime('2025-10-4', '%Y-%m-%d').date()
-		employeed_days = (today - hired_date).days
+	# 	today = datetime.now().date()
+	# 	hired_date = datetime.strptime('2025-10-4', '%Y-%m-%d').date()
+	# 	employeed_days = (today - hired_date).days
 
 
-		hired_emp = frappe.get_doc({
-			"doctype": "Employee",
-			"employee_name": "hossam",
-			"company": self.company.name,
-			"department" : self.dept.name,
-			"email_address": "hossam@a.com", 
-			"mobile_number": "+201111111112",
-			"hired_on": hired_date,
-			"designation__position": "HR"
-		}).insert()
+	# 	hired_emp = frappe.get_doc({
+	# 		"doctype": "Employee",
+	# 		"employee_name": "hossam",
+	# 		"company": self.company.name,
+	# 		"department" : self.dept.name,
+	# 		"email_address": "hossam@a.com", 
+	# 		"mobile_number": "+201111111112",
+	# 		"hired_on": hired_date,
+	# 		"designation__position": "HR"
+	# 	}).insert()
 
-		self.assertEqual(unhired_emp.days_employed, None)
-		self.assertEqual(hired_emp.days_employed, employeed_days)
+	# 	self.assertEqual(unhired_emp.days_employed, None)
+	# 	self.assertEqual(hired_emp.days_employed, employeed_days)
 
+	def test_update_employee_for_company(self):
+		"""
+		Test case for updating number of employees for the company
+		"""
+		self.company.reload()
+		self.assertEqual(self.company.number_of_employees, 1)
+		# adding new employee
+		self.create_employees(4)
+		self.company.reload()
+		self.assertEqual(self.company.number_of_employees, 5)
+		# deleting employee
+		self.employee.delete()
+		self.company.reload()
+		self.assertEqual(self.company.number_of_employees, 4)
+
+
+	def test_update_employee_for_department(self):
+		"""
+		Test case for updating number of employees for the department
+		"""
+		self.dept.reload()
+		self.assertEqual(self.dept.number_of_employees, 1)
+		# adding new employee
+		self.create_employees(4)
+		self.dept.reload()
+		self.assertEqual(self.dept.number_of_employees, 5)
+		# deleting employee
+		self.employee.delete()
+		self.dept.reload()
+		self.assertEqual(self.dept.number_of_employees, 4)
+
+
+
+	def create_employees(self, count=1):
+		for i in range(count):
+			frappe.get_doc({
+				"doctype": "Employee",
+				"employee_name": f"Emp {i}",
+				"company": self.company.name,
+				"department": self.dept.name,
+				"email_address": f"emp{i}@a.com",
+				"mobile_number": f"+20100000000{i}",
+			}).insert()

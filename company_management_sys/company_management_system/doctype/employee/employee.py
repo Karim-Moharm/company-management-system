@@ -10,15 +10,15 @@ class Employee(Document):
 	def validate(self):
 		self.calculate_days_employed()
 
+	def after_insert(self):
+		update_company_fields(self.company)
+		update_dept_fields(self.department)
 
 	def on_trash(self):
 		update_company_fields(self.company)
 		update_dept_fields(self.department)
 
 
-	def after_insert(self):
-		update_company_fields(self.company)
-		update_dept_fields(self.department)
 
 
 	def calculate_days_employed(self):
